@@ -14,6 +14,7 @@ namespace Demo_SingleKeyPressMenu
         static void Main(string[] args)
         {
             bool quitApplication = false;
+            bool invalidResponse = false;
             ConsoleKeyInfo menuChoiceKey;
             char menuChoice;
 
@@ -30,7 +31,21 @@ namespace Demo_SingleKeyPressMenu
                 Console.WriteLine("q) Quit");
                 Console.WriteLine();
 
-                Console.Write("Enter the letter for the menu item:");
+                Console.Write("Menu Choice:");
+
+                //
+                // feedback message for invalid response
+                //
+                if (invalidResponse)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("********************************************************");
+                    Console.WriteLine("*                                                      *");
+                    Console.WriteLine("*    Please type the letter of the menu choice.        *");
+                    Console.WriteLine("*                                                      *");
+                    Console.WriteLine("********************************************************");
+                }
+                Console.CursorVisible = false;
                 menuChoiceKey = Console.ReadKey();
                 menuChoice = menuChoiceKey.KeyChar;
 
@@ -38,18 +53,25 @@ namespace Demo_SingleKeyPressMenu
                 {
                     case 'a':
                         DisplayChoiceA();
+                        invalidResponse = false;
                         break;
 
                     case 'b':
                         DisplayChoiceB();
+                        invalidResponse = false;
                         break;
 
                     case 'c':
                         DisplayChoiceC();
+                        invalidResponse = false;
+                        break;
+
+                    case 'q':
+                        quitApplication = true;
                         break;
 
                     default:
-                        quitApplication = true;
+                        invalidResponse = true;
                         break;
                 }
 
