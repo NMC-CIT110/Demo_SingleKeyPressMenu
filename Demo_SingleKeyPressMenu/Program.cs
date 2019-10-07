@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Demo_SingleKeyPressMenu
 {
+    /// <summary>
+    /// demonstration of using a single key stroke to make a menu choice
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
